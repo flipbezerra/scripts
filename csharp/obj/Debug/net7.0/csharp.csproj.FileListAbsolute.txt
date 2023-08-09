@@ -1,0 +1,14 @@
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\bin\Debug\net7.0\csharp.exe
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\bin\Debug\net7.0\csharp.deps.json
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\bin\Debug\net7.0\csharp.runtimeconfig.json
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\bin\Debug\net7.0\csharp.dll
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\bin\Debug\net7.0\csharp.pdb
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\obj\Debug\net7.0\csharp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\obj\Debug\net7.0\csharp.AssemblyInfoInputs.cache
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\obj\Debug\net7.0\csharp.AssemblyInfo.cs
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\obj\Debug\net7.0\csharp.csproj.CoreCompileInputs.cache
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\obj\Debug\net7.0\csharp.dll
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\obj\Debug\net7.0\refint\csharp.dll
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\obj\Debug\net7.0\csharp.pdb
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\obj\Debug\net7.0\csharp.genruntimeconfig.cache
+D:\Users\felipe.bezerra\Documents\Sandbox\csharp\obj\Debug\net7.0\ref\csharp.dll
