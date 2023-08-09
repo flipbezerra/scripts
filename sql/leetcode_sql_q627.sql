@@ -1,5 +1,7 @@
 -- troca na tabela salário o atributo sexo (enum('m', 'f')) por 'm' onde ele for 'f' e vice-versa
-UPDATE salarios SET sexo = IF(sexo = 'm', 'f', IF(sexo = 'f', 'm', sexo)) WHERE id <> 0;
+UPDATE salarios 
+SET sexo = IF(sexo = 'm', 'f', IF(sexo = 'f', 'm', sexo)) 
+WHERE id <> 0;
 -- alternativa usando CASE
 UPDATE salarios
 SET sexo = CASE sexo
