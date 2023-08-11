@@ -1,0 +1,186 @@
+Comando ls
+ls lista o conteúdo do seu diretório atual ou o diretório especificado em um argumento para o comando. Por si só, ele lista os arquivos e diretórios no diretório atual:
+
+ls
+Os arquivos e diretórios cujos nomes começam com um ponto ficam ocultos por padrão. Para incluir esses itens em uma listagem de diretório, use um sinalizador de -a:
+
+ls -a
+Para obter ainda mais informações sobre os arquivos e diretórios no diretório atual, use um sinalizador de -l:
+
+ls -l
+Aqui estão alguns exemplos de saída de um diretório que contém alguns JPEGs e PNGs e um subdiretório chamado gifs:
+
+-rw-rw-r-- 1 azureuser azureuser  473774 Jun 13 15:38 0001.png
+-rw-rw-r-- 1 azureuser azureuser 1557965 Jun 13 14:43 0002.jpg
+-rw-rw-r-- 1 azureuser azureuser  473774 Mar 26 09:21 0003.png
+-rw-rw-r-- 1 azureuser azureuser 4193680 Jun 13 09:40 0004.jpg
+-rw-rw-r-- 1 azureuser azureuser  423325 Jun 10 12:53 0005.jpg
+-rw-rw-r-- 1 azureuser azureuser 2278001 Jun 12 04:21 0006.jpg
+-rw-rw-r-- 1 azureuser azureuser 1220517 Jun 13 14:44 0007.jpg
+drwxrwxr-x 2 azureuser azureuser    4096 Jun 13 20:16 gifs
+Cada linha fornece informações detalhadas sobre o arquivo ou diretório correspondente. Essas informações incluem as permissões atribuídas a ela, seu proprietário, seu tamanho em bytes, a última vez que ela foi modificada e o nome do arquivo ou diretório.
+
+Comando cat
+Suponha que você queira ver o que está dentro de um arquivo. Você pode usar o comando cat para isso. A saída não fará muito sentido, a menos que o arquivo seja um arquivo de texto. O comando a seguir mostra o conteúdo do arquivo os-release armazenado no diretório /etc:
+
+cat /etc/os-release
+Esse é um comando útil porque informa qual distribuição do Linux você está executando:
+
+NAME="Ubuntu"
+VERSION="18.04.2 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.2 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+O diretório /etc é especial no Linux. Ele contém arquivos de configuração do sistema. Você não deseja excluir nenhum arquivo desse diretório, a menos que saiba o que está fazendo.
+
+Comando sudo
+Alguns comandos Bash só podem ser executados pelo usuário raiz — um administrador do sistema ou um superusuário. Se você tentar um desses comandos sem privilégios suficientes, ele falhará. Por exemplo, somente os usuários conectados como um superusuário podem usar cat para exibir o conteúdo de /etc/at.deny:
+
+cat /etc/at.deny
+at.deny é um arquivo especial que determina quem pode usar outros comandos Bash para enviar trabalhos para execução posterior.
+
+Na maioria das vezes, você não quer executar como raiz, pois é muito perigoso. Para executar comandos que exigem privilégios de administrador sem fazer logon como superusuário, utilize o sufixo sudo nos comandos:
+
+sudo cat /etc/at.deny
+sudo quer dizer "o superusuário faz". Ao usá-lo, estará informando ao shell que, para esse único comando, você está agindo com o nível de permissão do usuário raiz.
+
+Comandos cd, mkdir e rmdir
+cd significa "change directory (alterar diretório, em inglês) e faz exatamente o que o nome sugere: ele altera o diretório atual para outro diretório. Permite que você mova de um diretório para outro assim como seu equivalente no Windows. O comando a seguir muda para um subdiretório do diretório atual chamado orders:
+
+cd orders
+Você pode mover um diretório para cima especificando .. como o nome do diretório:
+
+cd ..
+Esse comando muda para o diretório base — aquele em que você chega ao fazer logon pela primeira vez:
+
+cd ~
+Você pode criar diretórios usando o comando mkdir. O comando a seguir cria um subdiretório chamado orders no diretório de trabalho atual:
+
+mkdir orders
+Se você quiser criar um subdiretório e outro subdiretório sob ele com um comando, use o sinalizador --parents:
+
+mkdir --parents orders/2019
+O comando rmdir excluirá (removerá) um diretório, mas apenas se ele não estiver vazio. Felizmente, você pode usar o comando rm para excluir diretórios que não estão vazios.
+
+Comando rm
+O comando rm é a abreviação de "remover". Como você esperaria, rm exclui arquivos. Portanto, esse comando coloca um fim ao 0001.jpg:
+
+rm 0001.jpg
+Esse comando excluir todos os arquivos no diretório atual:
+
+rm *
+Tenha cuidado com o rm. É um comando perigoso.
+
+A execução de rm com um sinalizador de -i permite que você pense antes de excluir:
+
+rm -i *
+Torne-o um hábito incluir -i em cada comando rm, e você pode evitar ser vítima de um dos maiores problemas do Linux. O temido comando rm -rf / exclui todos os arquivos em uma unidade inteira. Ele funciona pela exclusão recursiva de todos os subdiretórios da raiz e de seus subdiretórios. O sinalizador -f (de "forçar") aumenta o problema suprimindo prompts. Não faça isso.
+
+Se você quiser excluir um subdiretório chamado orders que não esteja vazio, poderá usar o comando rm desta maneira:
+
+rm -r orders
+Isso exclui o subdiretório orders e tudo que ele contém, inclusive outros subdiretórios.
+
+Comando cp
+O comando cp copia não apenas arquivos, mas diretórios inteiros (e subdiretórios), se você desejar. Para fazer uma cópia de 0001.jpg chamado 0002.jpg, use este comando:
+
+cp 0001.jpg 0002.jpg
+Se 0002.jpg já existir, o Bash o substituirá silenciosamente. Isso é ótimo se é o que você pretendia, mas não tão maravilhoso se você não percebeu que estava prestes a substituir a versão antiga.
+
+Felizmente, se você usa o sinalizador -i (de "interativo"), o Bash o avisa antes de excluir os arquivos existentes. Isto é muito mais seguro:
+
+cp -i 0001.jpg 0002.jpg
+É claro que você pode usar curingas para copiar vários arquivos de uma vez. Para copiar todos os arquivos no diretório atual para um subdiretório chamado photos, faça o seguinte:
+
+cp * photos
+Para copiar todos os arquivos em um subdiretório chamado photos para um subdiretório chamado images, faça o seguinte:
+
+cp photos/* images
+Isso pressupõe que o diretório images já exista. Se não existir, você poderá criá-lo e copiar o conteúdo do diretório photos usando este comando:
+
+cp -r photos images
+-r quer dizer "recursivo". Um benefício adicional do sinalizador -r é que, se photos contiver subdiretórios próprios, eles também serão copiados para o diretório images.
+
+Comando ps
+O comando ps fornece um instantâneo de todos os processos em execução no momento. Por si só, sem argumentos, ele mostra todos os processos do shell, ou seja, não muito. Mas é uma história diferente quando você inclui um sinalizador de -e:
+
+ps -e
+O -e lista todos os processos em execução, e geralmente há muitos deles.
+
+Para obter uma visão mais abrangente de quais processos estão sendo executados no sistema, use o sinalizador -ef:
+
+ps -ef 
+Esse sinalizador mostra os nomes de todos os processos em execução, seus PIDs (números de identificação de processo), os PPIDs (PIDs de seus pais) e quando eles começaram (STIME). Ele também mostra qual terminal, se houver, ao qual estão anexados (TTY), quanto tempo de CPU ele colocou em rack (TIME) e seus nomes de caminho completo. Veja um exemplo abreviado:
+
+UID         PID   PPID  C STIME TTY          TIME CMD
+root          1      0  0 13:35 ?        00:00:03 /sbin/init
+root          2      0  0 13:35 ?        00:00:00 [kthreadd]
+root          3      2  0 13:35 ?        00:00:00 [rcu_gp]
+root          4      2  0 13:35 ?        00:00:00 [rcu_par_gp]
+root          5      2  0 13:35 ?        00:00:00 [kworker/0:0-cgr]
+root          6      2  0 13:35 ?        00:00:00 [kworker/0:0H-kb]
+root          8      2  0 13:35 ?        00:00:00 [mm_percpu_wq]
+root          9      2  0 13:35 ?        00:00:01 [ksoftirqd/0]
+root         10      2  0 13:35 ?        00:00:02 [rcu_sched]
+Além disso, você pode encontrar a documentação que mostra ps sendo usado dessa maneira:
+
+ps aux
+ps aux e ps -ef são iguais. Essa dualidade é voltada para as diferenças históricas entre os sistemas Unix POSIX (entre eles, o Linux) e os sistemas Unix BSD (o mais comum deles é o macOS). No início, o POSIX usava -ef enquanto o BSD exigia aux. Atualmente, ambas as famílias de sistemas operacionais aceitam qualquer um dos formatos.
+
+Isso serve como um lembrete excelente de por que você deve examinar de maneira mais detalhada o manual em busca de todos os comandos do Linux. Aprender Bash é como aprender inglês como uma segunda língua. Há muitas exceções às regras.
+
+Comando w
+Usuários vem, usuários vão e, às vezes, você obtém usuários que não deseja. Quando um funcionário sai em busca de outras oportunidades, o administrador do sistema é chamado para garantir que ele não possa mais fazer logon nos sistemas de computador da empresa. Os administradores do sistema também devem saber quem está conectado — e quem não deveria estar.
+
+Para descobrir quem está nos servidores, o Linux fornece o comando w (de "who", "quem", em inglês). Ele exibe informações sobre os usuários que estão no sistema de computador no momento e as atividades desses usuários. w mostra os nomes de usuário, seus endereços IP, quando eles fizeram logon, quais processos estão sendo executados no momento e quanto tempo esses processos estão consumindo. É uma ferramenta valiosa para administradores do sistema.
+
+Operadores de E/S de Bash
+Você pode fazer muito no Linux experimentando comandos Bash e suas muitas opções. Porém, você pode realmente ser produtivo ao combinar comandos usando operadores de E/S:
+
+< para redirecionar a entrada para uma fonte que não o teclado
+> para redirecionar a saída para um destino que não a tela
+>> para fazer o mesmo, mas acrescentando, em vez de substituindo
+| para canalizar a saída de um comando para a entrada de outro
+Suponha que você queira listar tudo no diretório atual, mas capture a saída em um arquivo chamado listing.txt. O comando a seguir faz exatamente isso:
+
+ls > listing.txt
+Se listing.txt já existir, ele será substituído. Se você usar o operador de >> em vez disso, a saída de ls será anexada ao que já está em listing.txt:
+
+ls >> listing.txt
+O operador de canalização é extremamente poderoso (e usado com frequência). Ele redireciona a saída do primeiro comando para a entrada do segundo. Digamos que você use cat para exibir o conteúdo de um arquivo grande, mas o conteúdo role rápido demais para você ler. Você pode tornar a saída mais gerenciável ao canalizar os resultados para outro comando, como more. O comando a seguir lista todos os processos em execução no momento. Porém, quando a tela estiver cheia, a saída fará uma pausa até que você selecione Enter para mostrar a próxima linha:
+
+ps -ef | more
+Você também pode canalizar a saída para head para ver apenas as primeiras várias linhas:
+
+ps -ef | head
+Ou suponha que você queira filtrar a saída para incluir apenas as linhas que contêm a palavra "daemon". Uma maneira de fazer isso é canalização da saída de ps para a ferramenta grep útil do Linux:
+
+ps -ef | grep daemon
+A saída pode ter a seguinte aparência:
+
+azureus+  52463  50702  0 23:28 pts/0    00:00:00 grep --color=auto deamon
+azureuser@bash-vm:~$ ps -ef | grep daemon
+root        449      1  0 13:35 ?        00:00:17 /usr/lib/linux-tools/4.18.0-1018-azure/hv_kvp_daemon -n
+root        988      1  0 13:35 ?        00:00:00 /usr/lib/accountsservice/accounts-daemon
+message+   1002      1  0 13:35 ?        00:00:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+daemon     1035      1  0 13:35 ?        00:00:00 /usr/sbin/atd -f
+root       1037      1  0 13:35 ?        00:00:00 /usr/bin/python3 -u /usr/sbin/waagent -daemon
+root       1039      1  0 13:35 ?        00:00:00 /usr/lib/linux-tools/4.18.0-1018-azure/hv_vss_daemon -n
+azureus+  52477  50702  0 23:28 pts/0    00:00:00 grep --color=auto daemon
+Você também pode usar arquivos como entrada. Por padrão, a entrada padrão vem do teclado, mas também pode ser redirecionada. Para obter a entrada de um arquivo em vez do teclado, use o operador <. Uma tarefa de sysadmin comum é classificar o conteúdo de um arquivo. Como o nome sugere, sort classifica o texto em ordem alfabética:
+
+sort < file.txt
+Para salvar os resultados classificados em um novo arquivo, você pode redirecionar a entrada e a saída:
+
+sort < file.txt > sorted_file.txt
+Você pode usar os operadores de E/S para encadear comandos do Linux, conforme necessário. Considere o seguinte código:
+
+cat file.txt | fmt | pr | lpr
+A saída de cat vai para fmt, a saída de fmt vai para pr e assim por diante. fmt formata os resultados em um parágrafo organizado. pr pagina os resultados. E lpr envia a saída paginada para a impressora. Tudo em uma única linha.
