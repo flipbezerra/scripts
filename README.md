@@ -1,2 +1,2 @@
 # Prática de código para solução de problemas
-Os problemas resolvidos são da plataforma Leetcode.
+Os problemas foram retirados da plataforma LeetCode.
