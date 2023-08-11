@@ -1,1 +1,2 @@
-# Prática de programação através de problemas do LeetCode, incluindo código em Python, C#, JavaScript, queries do SQL, e scripts do Bash.
+# Prática de código para solução de problemas
+Os problemas resolvidos são da plataforma Leetcode.
