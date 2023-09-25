@@ -1,4 +1,4 @@
--- cria uma tabela juntando as tabelas pessoas e enderecos através da ocorrência de um id_pessoa correspondente
+-- mescla as tabelas pessoas e endereço por meio de ocorrências de id_pessoa correspondentes
 SELECT pessoas.primeiro_nome, pessoas.segundo_nome, endereco.cidade 
 FROM pessoas LEFT JOIN endereco USING (id_pessoa);
 
